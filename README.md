@@ -16,7 +16,9 @@ from the responsive side, I use the grid to change columns in each row.
 
 
 **Here is the wirefram screenshots of this assignment**
-
+![Screen Shot 2022-03-09 at 10 42 12 AM](https://user-images.githubusercontent.com/89866910/158000609-a1e7fdd9-28d0-449e-ba64-3d640dd3d835.png)
+![Screen Shot 2022-03-09 at 10 47 57 AM](https://user-images.githubusercontent.com/89866910/158000613-caa499bd-e046-4460-b78b-927c9c83c6ab.png)
+![Screen Shot 2022-03-09 at 2 32 39 PM](https://user-images.githubusercontent.com/89866910/158000616-f30e0019-a651-46c4-94be-5e63a5642076.png)
 ![Screen Shot 2022-03-11 at 6 12 56 PM](https://user-images.githubusercontent.com/89866910/158000556-d55adbd6-37d7-4910-9e00-751f4a9c044f.png)
 ![Screen Shot 2022-03-11 at 6 14 11 PM](https://user-images.githubusercontent.com/89866910/158000557-ee2aa32c-3c65-479e-b5a6-8c72768401ff.png)
 ![Screen Shot 2022-03-11 at 6 14 24 PM](https://user-images.githubusercontent.com/89866910/158000559-c6bf04bc-d572-4afd-b8c1-6ed86ea8cfb9.png)
