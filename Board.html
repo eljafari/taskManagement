@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/7d47c47da6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="board.css">
+    <title>Board</title>
+</head>
+<body>
+    <header>
+                <div class="col-md-6  wlcUser">
+                   <img src="https://cdn.iconscout.com/icon/free/png-256/project-management-2076268-1756548.png" alt="">
+                    <h2>Welcome <span id="userName"></span></h2>
+                </div>
+                <div class="col-md-6 hdDiv">
+                    <a href="signin.html">Log Out
+                    <i class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+    </header>
+    <section>
+        <ul id="tasks" class="tasks">
+            <li class="tsk">
+                <div class="tskhead">
+                    <h3>task1</h3>
+                    <button class="btnEdit" id="btnEdit"><i class="fa-solid fa-edit"></i></button>
+                    <button class="btnDelete"  id="btnDelete"><i class="fa-solid fa-remove"></i></button>
+                </div>
+                <div class="tskBody">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, obcaecati.
+                </div>
+            </li>
+        </ul>
+        <button class="addtsk" onclick="popupForm()" id="addtsk"><i class="fa-solid fa-plus fa-2x"></i></button>
+        <form class="frmpopup" id="frm-popup" onsubmit="addCard(event)" >
+            <h3>Fill the form for this card...<i class="fa fa-pen"></i></h3>
+            <hr>
+                <div class="input-group">
+                    <input type="text" class="popupTitle" id="frmTitle" name="title" placeholder="Title" required="required">
+                </div>
+                <p class="input-group">
+                    <textarea type="text" class="popupDec" id="description" name="description" placeholder="Description" required="required"></textarea>
+                </p>
+                <button  type="submit" class="btn">Add</button>
+        </form>
+    </section>
+    <footer>
+
+    </footer>
+    <script>
+        let user= JSON.parse(localStorage.getItem('user')).username;
+        let title= document.getElementById("frmTitle");
+        let description= document.getElementById("description");
+        let cardArr=[];
+        // welcome NAme
+        document.getElementById('userName').innerHTML= user[0].toUpperCase()+user.substring(1);
+        // pop up form
+       const popupForm= ()=>{
+           document.getElementById("frm-popup").style.display="block";
+       }
+        // loadCards
+        const loadCards=(cardArr)=>{   
+        let cardHtml="";
+           for(i=cardArr.length-1; i>=0;i--){
+               
+                cardHtml+=`
+                 <li class="tsk">
+                <div class="tskhead">
+                <h3>${cardArr[i].title}</h3>
+                <button class="btnEdit" onclick="edit(this.id)" id="${i}"><i class="fa-solid fa-edit"></i></button>
+                <button class="btnDelete" onclick="remove(this.id)" id="${i}"><i class="fa-solid fa-remove"></i></button>
+                </div>
+                <div class="tskBody">${cardArr[i].description}
+                </div>
+            </li>
+           `
+            };
+            document.getElementById("tasks").innerHTML=cardHtml;
+        }
+    //    Add card
+       const addCard= (e)=>{
+            let card={
+                'title':title.value,
+                'description':description.value,   
+            }
+            let cardArr= JSON.parse(localStorage.getItem('cardArr'));
+            cardArr.push(card);
+            // console.log(ind)
+            localStorage.setItem('cardArr',JSON.stringify(cardArr));
+            loadCards(cardArr);
+            // e.preventDefault();
+            document.getElementById("frm-popup").style.display="none";
+            title.value= "";
+            description.value= "";
+        }
+        const loadWindow=()=>{
+            let cardArr= JSON.parse(localStorage.getItem('cardArr'));
+            loadCards(cardArr);
+        }
+        loadWindow();
+        
+        const remove=(id)=>
+        {
+            let cardArr= JSON.parse(localStorage.getItem('cardArr'));
+            cardArr.splice(id, 1); 
+            localStorage.setItem('cardArr',JSON.stringify(cardArr));
+            loadCards(cardArr);
+        } 
+        const edit=(id)=>{
+            let cardArr= JSON.parse(localStorage.getItem('cardArr'));
+            let card=cardArr[id];
+            remove(id);
+            console.log(cardArr[id])
+            document.getElementById("frm-popup").style.display="block";
+            document.getElementById('description').innerHTML=card.description;
+            // (JSON.parse(localStorage.getItem('cardArr')))[id].title
+            document.getElementById('frmTitle').innerHTML=card.title
+            // loadWindow()
+            
+        }
+        </script>
+</body>
+</html>

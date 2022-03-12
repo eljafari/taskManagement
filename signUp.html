@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="signUp.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <style>
+        
+    </style>
+    </head>
+    <body>
+    <div class="signup-form">
+        <form action="" id="form" onsubmit="signUp(event)" >
+            <h2>Sign Up</h2>
+            <p>Create your account</p>
+            <hr>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Name" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input autocomplete="off" type="text" class="form-control" id="pass" name="password" placeholder="Password" required="required">
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-lock"></i>
+                        <i class="fa fa-check"></i>
+                    </span>
+                    <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+                </div>
+            </div> -->
+            <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+            </div>
+            <div class="form-group">
+                <button  type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+            </div>
+        </form>
+        <div class="text-center">Already have an account? <a href="signin.html">Login here</a></div>
+    </div>
+    <script>      
+            let users;
+            if((JSON.parse(localStorage.getItem('users')))==null)
+                {
+                    users=[]
+                }else{
+                    users=JSON.parse(localStorage.getItem('users'))
+                }
+            const signUp= e=>
+            {   
+                console.log('users'+users)
+                let inputName=document.getElementById("username").value;
+                let inputEmail=document.getElementById("email").value;
+                let inputPass=document.getElementById("pass").value;
+                console.log('inputName'+inputName)
+                console.log('inputEmail'+inputEmail)
+                console.log('inputPass'+inputPass)
+
+
+                for ( let i=0;i<users.length;i++) 
+                {
+                    console.log("inputEmail="+inputEmail);
+                    console.log("users[i].email="+users[i].email);
+
+                    if(inputEmail==users[i].email) 
+                    {
+                        alert("This email is taken. Please try another email!");
+
+                        return;
+                    }                   
+                }
+
+                console.log("Valid for SignUp");
+
+                let user={
+                    'username':inputName,
+                    'email':inputEmail, 
+                    'pass':inputPass,
+                }
+                console.log(user)
+                localStorage.setItem('user',JSON.stringify(user))
+                // // console.log(localStorage.getItem('user'))
+                users.push(user);
+                localStorage.setItem('users',JSON.stringify(users))
+                // // console.log(users)
+                inputName.value="";
+                inputEmail.value="";
+                inputPass.value="";
+                e.preventDefault();
+
+                window.location='board.html';
+            }
+    </script>
+    </body>
+</html>

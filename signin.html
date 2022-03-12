@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="signUp.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <style>
+        
+    </style>
+    </head>
+    <body>
+    <div class="signup-form">
+        <form action="" id="form" onsubmit="signIn(event)" >
+            <h2>Task Management</h2>
+            <p>Log in to continue to: </p>
+            <hr>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input autocomplete="off" type="text" class="form-control" id="pass" name="password" placeholder="Password" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <button  type="submit" class="btn btn-primary btn-lg">Log In</button>
+            </div>
+        </form>
+        <div class="text-center">Can't log in? <a href="signUp.html">Sign Up for an account</a></div>
+    </div>
+    <script>      
+        const signIn= e=>
+        {
+            e.preventDefault();
+            let inputEmail=document.getElementById("email").value;
+            let inputPass=document.getElementById("pass").value;
+           let  usersData= JSON.parse(localStorage.getItem('users'));
+            let test=0;
+            for ( let i=0;i<usersData.length;i++) {
+                if((inputEmail==usersData[i].email)&&(inputPass==usersData[i].pass)) 
+                {            
+                    let user=
+                    {
+                        'username':usersData[i].username,
+                        'email':usersData[i].email, 
+                        'pass':usersData[i].pass,
+                    }  
+                    localStorage.setItem('user',JSON.stringify(user));
+                    window.location='board.html';
+                    break;
+                }else{
+                    test+=1;
+                };
+            };
+            if (test==usersData.length){
+                alert("Email or Password is not correct, Please try again! :)")
+            };
+        }
+    </script>
+    </body>
+</html>
