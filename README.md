@@ -8,6 +8,7 @@ The requirement for this assignment was to create a website with a signup and si
 **Features:**
 **Signup Page**
 A form with input Name, Email, Password that will check if an email has registered before or not if not will load the board page.
+
 **Sign in Page**
 A form with input Email, Password that will check if email and password is matching with user info in local storage then will load board page.
 **Board Page**
