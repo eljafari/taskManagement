@@ -11,6 +11,7 @@ A form with input Name, Email, Password that will check if an email has register
 
 **Sign in Page**
 A form with input Email, Password that will check if email and password is matching with user info in local storage then will load board page.
+
 **Board Page**
 A page with a button to add tasks that I used the pop-up form to display it and then will show it on the main page. each task has an edit and deletes button. 
 from the responsive side, I use the grid to change columns in each row. 
