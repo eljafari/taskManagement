@@ -11,6 +11,12 @@
     </style>
     </head>
     <body>
+        <header>
+            <div class="logo">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/project-management-2076268-1756548.png" alt="">
+                <h1>Task Management</h1>
+            </div>
+        </header>
     <div class="signup-form">
         <form action="" id="form" onsubmit="signIn(event)" >
             <h2>Task Management</h2>
@@ -32,7 +38,7 @@
                 <button  type="submit" class="btn btn-primary btn-lg">Log In</button>
             </div>
         </form>
-        <div class="text-center">Can't log in? <a href="signUp.html">Sign Up for an account</a></div>
+        <div class="text-center">Can't log in? <a href="/index.html">Sign Up for an account</a></div>
     </div>
     <script>      
         const signIn= e=>
@@ -52,7 +58,7 @@
                         'pass':usersData[i].pass,
                     }  
                     localStorage.setItem('user',JSON.stringify(user));
-                    window.location='board.html';
+                    window.location='/board.html';
                     break;
                 }else{
                     test+=1;

@@ -100,7 +100,6 @@ button.addtsk {
     color: white;
   }
 }
-
 .frmpopup {
   display: none;
   position: fixed;
@@ -111,6 +110,12 @@ button.addtsk {
   height: 25em;
   background-color: #cecdcd;
   padding: 20px;
+  .close {
+    margin-left: 15%;
+    background-color: #f07830;
+    // border: none;
+    color: white;
+  }
   .popupTitle {
     padding: 10px;
     width: 90%;
@@ -158,6 +163,15 @@ footer {
     .tasks {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  section {
+    button.addtsk {
+      position: fixed;
+      bottom: 2em;
+      width: 88%;
+      border-radius: 3%;
+      height: 4em;
     }
   }
 }
