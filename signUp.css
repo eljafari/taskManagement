@@ -127,4 +127,14 @@ body {
   color: #179b81;
   text-decoration: underline;
 }
+
+header .logo h1 {
+  font-size: 21px;
+  text-align: center;
+}
+
+header .logo img {
+  width: 50px;
+  margin: 2% 48% 0;
+}
 /*# sourceMappingURL=signUp.css.map */

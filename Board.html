@@ -19,38 +19,32 @@
     </header>
     <section>
         <ul id="tasks" class="tasks">
-            <li class="tsk">
-                <div class="tskhead">
-                    <h3>task1</h3>
-                    <button class="btnEdit" id="btnEdit"><i class="fa-solid fa-edit"></i></button>
-                    <button class="btnDelete"  id="btnDelete"><i class="fa-solid fa-remove"></i></button>
-                </div>
-                <div class="tskBody">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, obcaecati.
-                </div>
-            </li>
+           <!-- Javascript will load here -->
         </ul>
+
         <button class="addtsk" onclick="popupForm()" id="addtsk"><i class="fa-solid fa-plus fa-2x"></i></button>
+
         <form class="frmpopup" id="frm-popup" onsubmit="addCard(event)" >
-            <h3>Fill the form for this card...<i class="fa fa-pen"></i></h3>
+            <h3>Fill the form for this card...<i class="fa fa-pen"></i> <button class="close" onclick="closeForm()"><i class="fa fa-close"></i></button></h3>
             <hr>
                 <div class="input-group">
-                    <input type="text" class="popupTitle" id="frmTitle" name="title" placeholder="Title" required="required">
+                    <textarea type="text" class="popupTitle" id="frmtitle"  placeholder="Title" required="required"></textarea>
                 </div>
                 <p class="input-group">
-                    <textarea type="text" class="popupDec" id="description" name="description" placeholder="Description" required="required"></textarea>
+                    <textarea type="text" class="popupDec" id="description"  placeholder="Description" required="required"></textarea>
                 </p>
                 <button  type="submit" class="btn">Add</button>
         </form>
+
     </section>
     <footer>
-
     </footer>
     <script>
         let user= JSON.parse(localStorage.getItem('user')).username;
-        let title= document.getElementById("frmTitle");
+        let title= document.getElementById("frmtitle");
         let description= document.getElementById("description");
         let cardArr=[];
+        
         // welcome NAme
         document.getElementById('userName').innerHTML= user[0].toUpperCase()+user.substring(1);
         // pop up form
@@ -78,6 +72,8 @@
         }
     //    Add card
        const addCard= (e)=>{
+       
+
             let card={
                 'title':title.value,
                 'description':description.value,   
@@ -107,15 +103,20 @@
         } 
         const edit=(id)=>{
             let cardArr= JSON.parse(localStorage.getItem('cardArr'));
-            let card=cardArr[id];
-            remove(id);
-            console.log(cardArr[id])
+            let thisCard=cardArr[id];
             document.getElementById("frm-popup").style.display="block";
-            document.getElementById('description').innerHTML=card.description;
-            // (JSON.parse(localStorage.getItem('cardArr')))[id].title
-            document.getElementById('frmTitle').innerHTML=card.title
-            // loadWindow()
+            remove(id);
+            let card={
+                'title':thisCard.title,
+                'description':thisCard.description,   
+            }
             
+            document.getElementById("frmtitle").innerHTML=card.title;
+            description.innerHTML=card.description;
+           
+        }
+        const closeForm=()=>{
+            document.getElementById("frm-popup").style.display="none";
         }
         </script>
 </body>
